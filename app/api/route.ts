@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
+import { connectToDataBase } from "../database/database";
 
 export  async function GET(){
+    await connectToDataBase()
     return NextResponse.json({message:"Hello World"});
 }
 

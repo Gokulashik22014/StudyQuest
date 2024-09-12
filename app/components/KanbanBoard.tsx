@@ -17,7 +17,7 @@ export default function KanbanBoard() {
   // Define initial data
   const initialData: ColumnType[] = [
     {
-      id: "tofo",
+      id: "todo",
       title: "To-Do",
       cards: [
         {

@@ -2,6 +2,7 @@ import React from "react";
 import Editor from "./components/Editor";
 import Subjects from "./components/Subjects";
 import KanbanBoard from "./components/KanbanBoard";
+import AISummarize from "./components/AISummarize";
 const Home = () => {
   return (
     <div className="mx-auto w-[90%] px-2 max-h-screen">
@@ -10,13 +11,15 @@ const Home = () => {
         <Subjects />
       </div>
       {/* additional info column */}
-      <div className="w-full">
+      <div className="w-full flex ">
         {/* to list of the subjects */}
-        <div className="w-1/2">
+        <div className="w-1/2 bg-black rounded-md m-1 h-[320px] text-white">
           <KanbanBoard/>
         </div>
         {/* Ai chat summarizer section */}
-        <div></div>
+        <div className="w-1/2 bg-black rounded-md m-1 h-[320px] text-white">
+          <AISummarize/>
+        </div>
       </div>
     </div>
   );
