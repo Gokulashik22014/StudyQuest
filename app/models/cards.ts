@@ -22,5 +22,5 @@ const cardsSchema = new mongoose.Schema(
   }
 );
 
-const CardsModel = mongoose.model("cards", cardsSchema);
+const CardsModel = mongoose.models.cards || mongoose.model("cards", cardsSchema);
 export default CardsModel;
