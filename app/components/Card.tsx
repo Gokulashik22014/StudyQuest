@@ -13,7 +13,7 @@ const Card: FC<CardType> = ({ id, title }) => {
   });
 
   const style = {
-    margin: "10px",
+    margin: "5px",
     opacity: 1,
     color: "#333",
     background: "white",
@@ -22,7 +22,7 @@ const Card: FC<CardType> = ({ id, title }) => {
   };
 
   return (
-    <div ref={setNodeRef} {...attributes} {...listeners} style={style}>
+    <div ref={setNodeRef} {...attributes} {...listeners} style={style} className="rounded-md">
       <div id={id}>
         <p>{title}</p>
       </div>

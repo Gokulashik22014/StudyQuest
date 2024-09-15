@@ -162,7 +162,7 @@ export default function KanbanBoard() {
       onDragOver={handleDragOver}
     >
       <div
-        className="KanbanBoard"
+        className="KanbanBoard  h-full"
         style={{ display: "flex", flexDirection: "row", padding: "20px" }}
       >
         {columns.map((column) => (

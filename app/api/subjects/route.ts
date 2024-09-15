@@ -10,3 +10,12 @@ export async function POST(request:Request){
         return NextResponse.json({success:false,error})
     }
 }
+
+export async function GET(request:Request){
+    try {
+        const result=await SubjectsModel.find({})
+        return NextResponse.json({success:true,message:result})
+    } catch (error) {
+        return NextResponse.json({success:false,error})
+    }
+}

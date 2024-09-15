@@ -1,5 +1,17 @@
-
+import axios from "axios";
 import React, { useState } from "react";
+import { FaRegEdit } from "react-icons/fa";
+import { MdCancel } from "react-icons/md";
+import { TiTick } from "react-icons/ti";
+type CardsType = {
+  _id: string;
+  name: string;
+  cards: string[];
+  createdAt?: string;
+  updatedAt?: string;
+  handleOnClick:any;
+};
+
 const InfoText = ({ name, value }: { name: string; value: number }) => {
   return (
     <div className="flex space-x-2">
@@ -8,21 +20,70 @@ const InfoText = ({ name, value }: { name: string; value: number }) => {
     </div>
   );
 };
-const Subject = () => {
-  const [text, setText] = useState<string>("Subject Name");
+const Subject = ({ name, cards, _id,handleOnClick }: CardsType) => {
+  const [text, setText] = useState<string>(name);
   const [isEdit, setIsEdit] = useState<boolean>(false);
+  const [hover, setHover] = useState<boolean>(false);
+  const color=(hover||isEdit)?"bg-zinc-300":"bg-white";
+  const handleEdit=async()=>{
+    try {
+      const response=await axios.put(`http://localhost:3000/api/subjects/${_id}`,{name:text})
+      if(response.data.success){
+        alert("Successfully updated")
+      }else{
+        alert("Something went wrong")
+      }
+      
+    } catch (error) {
+      console.log(error)
+    }finally{
+      setIsEdit(false)
+    }
+  }
   return (
-    <div className="w-64 h-18 bg-white rounded-md px-2 py-4">
+    <div
+      className={`flex flex-col justify-between w-64 h-18 ${color} rounded-md px-2 py-4`}
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
+      onClick={handleOnClick}
+    >
       <div className="text-center">
         {isEdit ? (
-          <input value={text} onChange={(e) => setText(e.target.value)} />
+          <div>
+            <input
+              value={text}
+              onChange={(e) => setText(e.target.value)}
+              className="outline-none border border-solid border-black rounded-md px-2 py-1"
+            />
+            <button className="bg-lime-400 rounded-md px-2 py-1 ml-2" onClick={handleEdit}>
+              <TiTick />
+            </button>
+          </div>
         ) : (
           <h1>{text}</h1>
         )}
       </div>
-      <div>
+      <div className="flex flex-grow flex-col">
         <InfoText name="Pending" value={1} />
         <InfoText name="Completed" value={12} />
+      </div>
+      <div className="flex justify-end space-x-2">
+        {isEdit && (
+          <button
+            className="bg-red-400 rounded-md px-2 py-1"
+            onClick={() => setIsEdit(false)}
+          >
+            <MdCancel />
+          </button>
+        )}
+        {(hover || isEdit) && (
+          <button
+            className="bg-slate-400 rounded-md px-2 py-1 duration-100 ease-in-out"
+            onClick={() => setIsEdit(true)}
+          >
+            <FaRegEdit />
+          </button>
+        )}
       </div>
     </div>
   );

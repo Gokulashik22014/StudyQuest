@@ -20,6 +20,15 @@ export async function GET(request:Request,{params}:ParamsType){
         return NextResponse.json({success:false,error})
     }
 }
+export async function PUT(request:Request,{params}:ParamsType){
+    try {
+        const {name}=await request.json()
+        const result=await SubjectsModel.findByIdAndUpdate(params.id,{name})
+        return NextResponse.json({success:true,message:result})
+    } catch (error) {
+        return NextResponse.json({success:false,error})
+    }
+}
 export async function PATCH(request:Request,{params}:ParamsType){
     try {
         const {type,cardId}=await request.json()

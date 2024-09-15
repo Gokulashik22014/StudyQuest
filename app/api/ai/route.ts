@@ -32,7 +32,7 @@ export async function POST(request: Request) {
         await AIModel.findOneAndUpdate(
             { subjectId: subId },
             { $push: { summary: { question, answer: answer.message.content } } },
-            { new: true } // Return the updated document after the update
+            { new: true }
         );
 
         return NextResponse.json({ message: true, answer: answer.message.content });
