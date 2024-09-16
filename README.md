@@ -19,7 +19,7 @@ StudyQuest is a web application built with Next.js that helps students organize 
 
 1. Clone the repository:
    ```
-   git clone https://github.com/yourusername/studyquest.git
+   git clone https://github.com/Gokulashik22014/StudyQuest.git
    cd studyquest
    ```
 
