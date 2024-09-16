@@ -14,6 +14,7 @@ export async function POST(request:Request){
 export async function GET(request:Request){
     try {
         const result=await SubjectsModel.find({})
+        // console.log(result)
         return NextResponse.json({success:true,message:result})
     } catch (error) {
         return NextResponse.json({success:false,error})

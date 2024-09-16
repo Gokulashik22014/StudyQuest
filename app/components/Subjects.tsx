@@ -11,7 +11,7 @@ type CardsType={
   updatedAt:string;
 }
 
-const Subjects = ({setSubjectId}:{setSubjectId:any}) => {
+const Subjects = ({setSubjectId,subjectId}:{setSubjectId:any,subjectId:any}) => {
   const [data,setData]=useState<CardsType[]|undefined>(undefined)
   const [name,setName]=useState<string| undefined>(undefined)
   useEffect(()=>{
@@ -38,7 +38,7 @@ const Subjects = ({setSubjectId}:{setSubjectId:any}) => {
   return (
     <div className="bg-slate-500 grid grid-flow-row grid-cols-4 gap-4 p-10 h-full overflow-scroll custom-scrollbar">
       {
-        data?.map((subject)=><Subject name={subject.name} cards={subject.cards} _id={subject._id} handleOnClick={()=>setSubjectId(subject._id)}/>)
+        data?.map((subject)=><Subject name={subject.name} cards={subject.cards} _id={subject._id} handleOnClick={()=>setSubjectId(subject._id)} subjectId={subjectId}/>)
       }
       <div className="flex-col w-64 h-18 bg-white/50 rounded-md border border-dashed border-black items-center flex justify-center">
         <input type="text" value={name} onChange={(e)=>setName(e.target.value)} className="rounded-md outline-none px-1 py-1"/>
