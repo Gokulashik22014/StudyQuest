@@ -27,7 +27,7 @@ export async function POST(request: Request) {
     // Use the Ollama API to get the answer for the question
     const query = "Summarize the content and give it in short: " + question;
     const answer = await ollama.chat({
-      model: "tinyllama",
+      model: "tinyllama",//change it to your model
       messages: [{ role: "user", content: query }],
     });
 
