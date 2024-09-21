@@ -13,7 +13,9 @@ export async function GET(request: Request) {
     return NextResponse.json({ success: false, error });
   }
 }
-
+// this could do with some improvements 
+//right now all we do is summarize 
+// need to improve the model as well 
 export async function POST(request: Request) {
   try {
     const { subId, question } = await request.json();
